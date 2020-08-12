@@ -15,7 +15,7 @@
 						<view class="index-search" style="margin-right: 120upx;margin-left: 140upx;" @tap="toSearchIndex">
 							<view class="icon_search" style="text-align: left">
 								<text class="cuIcon cuIcon-search" style="margin-right: 12upx"></text>
-								<text>输入关键字或粘贴宝贝标题1</text>
+								<text>输入关键字或粘贴宝贝标题</text>
 							</view>
 
 						</view>
