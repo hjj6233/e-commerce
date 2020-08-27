@@ -2,7 +2,11 @@
 	<view>
 		<view style="background: white;z-index: 999">
 			<scroll-view scroll-x class="bg-white nav" scroll-with-animation :scroll-left="scrollLeft" style="position: fixed;z-index: 100;border-bottom:1px solid ghostwhite">
-				<view class="cu-item" :class="index==TabCur?'text-green cur':''" v-for="(item,index) in category" @tap="tabSelect"
+				<view 
+				class="cu-item" 
+				:class="index==TabCur?'text-green cur':''"
+				 v-for="(item,index) in category"
+				  @tap="tabSelect"
 				 :data-id="index">
 					<text :style="index==TabCur?'background: #e10a07;color: white;padding: 2px 10px 2px 10px;border-radius: 16px;margin-right: -10px':'background: #ffffff;color: #333333;margin-right: -10px'">
 						{{item}}
@@ -269,8 +273,11 @@
 
 			loadCouponList: function(type) {
 				this.loadingType = 1;
-				this.$Request.get('/api/column/apikey/maxd/type/' + this.type + '/back/20/sort/' + this.sort + '/min_id/' + this.min_id +
-					'/cid/' + this.cid).then(res => {
+				// this.$Request.get('/api/column/apikey/maxd/type/' + this.type + '/back/20/sort/' + this.sort + '/min_id/' + this.min_id +
+				// 	'/cid/' + this.cid).then(res => {
+				this.$Request.getP('/api/tao-pie/v1/haodanku/goods/column?type=' + 
+					this.type + '&back=20&min_id=' + this.min_id + '&sort=' + this.sort +
+					'&cid=' + this.cid).then(res => {
 					this.loadingType = 0;
 					if (res.code === 1) {
 						if (this.page === 1) {

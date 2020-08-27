@@ -14,7 +14,7 @@ module.exports = {
 	},
 	//淘宝的Secret
 	getTaoBaoSecret() {
-		return uni.getStorageSync("taobaoSecret") 
+		return uni.getStorageSync("taobaoSecret")
 	},
 	//淘宝h5授权地址
 	getTaoBaoRedirect() {

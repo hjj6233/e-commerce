@@ -530,7 +530,8 @@ export default {
 			uni.showLoading({
 				title: '加载中...'
 			});
-			this.$Request.get('/api/item_detail/apikey/maxd/itemid/' + this.itemid).then(res => {
+			// this.$Request.get('/api/item_detail/apikey/maxd/itemid/' + this.itemid).then(res => {
+			this.$Request.getP('/api/tao-pie/v1/haodanku/goods/detail?itemId=' + this.itemid).then(res => {
 				if (res.code === 1) {
 					if (res.data.taobao_image && res.data.taobao_image.length > 0) {
 						let images = res.data.taobao_image.split(',');
@@ -931,8 +932,16 @@ export default {
 							} else {
 								coupon_click_url = res.data.coupon_click_url;
 							}
-							this.$Request
-								.postF('/tao/taobao/tbwd', {
+							// this.$Request
+							// 	.postF('/tao/taobao/tbwd', {
+							// 		appKey: this.$queue.getTaoBaoAppid(),
+							// 		appSecret: this.$queue.getTaoBaoSecret(),
+							// 		logo: this.goods.itempic,
+							// 		text: this.goods.itemtitle,
+							// 		url: coupon_click_url
+							// 	})
+							// 	.then(res => {
+							this.$Request.postP('/api/tao-pie/v1/taobao/tbk/tpwd', {
 									appKey: this.$queue.getTaoBaoAppid(),
 									appSecret: this.$queue.getTaoBaoSecret(),
 									logo: this.goods.itempic,
@@ -940,7 +949,8 @@ export default {
 									url: coupon_click_url
 								})
 								.then(res => {
-									if (res && res.tbk_tpwd_create_response.data.model) {
+									// if (res && res.tbk_tpwd_create_response.data.model) {
+									if (res && res.model) {
 										if (type === 'tkl' && type !== 'tklbuy') {
 											this.$refs.simpleModalTkl.show({
 												showConfirmButton: false
@@ -1026,8 +1036,16 @@ export default {
 							coupon_click_url = res.data.coupon_click_url + '&relationId=' + this.$queue.getInvitation();
 						}
 						this.coupon_click_url = coupon_click_url;
-						this.$Request
-							.postF('/tao/taobao/tbwd', {
+						// this.$Request
+						// 	.postF('/tao/taobao/tbwd', {
+						// 		appKey: this.$queue.getTaoBaoAppid(),
+						// 		appSecret: this.$queue.getTaoBaoSecret(),
+						// 		logo: this.goods.itempic,
+						// 		text: this.goods.itemtitle,
+						// 		url: coupon_click_url
+						// 	})
+						// 	.then(res => {
+						this.$Request.postP('/api/tao-pie/v1/taobao/tbk/tpwd', {
 								appKey: this.$queue.getTaoBaoAppid(),
 								appSecret: this.$queue.getTaoBaoSecret(),
 								logo: this.goods.itempic,
@@ -1035,10 +1053,12 @@ export default {
 								url: coupon_click_url
 							})
 							.then(res => {
-								if (res && res.tbk_tpwd_create_response.data.model) {
-									this.tkl = res.tbk_tpwd_create_response.data.model;
+								// if (res && res.tbk_tpwd_create_response.data.model) {
+								if (res && res.model) {
 									// this.tkl = res.tbk_tpwd_create_response.data.model;
-									this.erweima = '复制这段内容(' + res.tbk_tpwd_create_response.data.model + ')\n打开【手淘】领券';
+									this.tkl = res.model;
+									// this.erweima = '复制这段内容(' + res.tbk_tpwd_create_response.data.model + ')\n打开【手淘】领券';
+									this.erweima = '复制这段内容(' + res.model + ')\n打开【手淘】领券';
 								}
 							});
 					}

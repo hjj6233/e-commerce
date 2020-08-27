@@ -160,7 +160,8 @@
 				uni.showLoading({
 					title: '海报生成中...'
 				});
-				this.$Request.get('/api/item_detail/apikey/maxd/itemid/' + qrR).then(res => {
+				// this.$Request.get('/api/item_detail/apikey/maxd/itemid/' + qrR).then(res => {
+				this.$Request.getP('/api/tao-pie/v1/haodanku/goods/detail?itemId=' + qrR).then(res => {
 					if (res.code === 1) {
 						this.itemprice = res.data.itemprice;
 						this.itempic = "https://" + res.data.itempic.split('://')[1];

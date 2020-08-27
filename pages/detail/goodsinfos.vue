@@ -381,7 +381,8 @@
                 uni.showLoading({
                     title: '加载中...'
                 });
-                this.$Request.get("/api/item_detail/apikey/maxd/itemid/" + this.itemid).then(res => {
+                // this.$Request.get("/api/item_detail/apikey/maxd/itemid/" + this.itemid).then(res => {
+								this.$Request.getP('/api/tao-pie/v1/haodanku/goods/detail?itemId=' + this.itemid).then(res => {
                     if (res.code === 1) {
                         if (res.data.taobao_image && res.data.taobao_image.length > 0) {
                             let images = res.data.taobao_image.split(',');
@@ -720,15 +721,25 @@
                             } else {
                                 coupon_click_url = res.data.coupon_click_url
                             }
-                            this.$Request.postF("/tao/taobao/tbwd", {
-                                appKey: this.$queue.getTaoBaoAppid(),
-                                appSecret: this.$queue.getTaoBaoSecret(),
-                                logo: this.goods.itempic,
-                                text: this.goods.itemtitle,
-                                url: coupon_click_url
-                            }).then(res => {
-                                if (res && res.tbk_tpwd_create_response.data.model) {
-                                    this.tkl = res.tbk_tpwd_create_response.data.model;
+                            // this.$Request.postF("/tao/taobao/tbwd", {
+                            //     appKey: this.$queue.getTaoBaoAppid(),
+                            //     appSecret: this.$queue.getTaoBaoSecret(),
+                            //     logo: this.goods.itempic,
+                            //     text: this.goods.itemtitle,
+                            //     url: coupon_click_url
+                            // }).then(res => {
+														this.$Request.postP('/api/tao-pie/v1/taobao/tbk/tpwd', {
+																appKey: this.$queue.getTaoBaoAppid(),
+																appSecret: this.$queue.getTaoBaoSecret(),
+																logo: this.goods.itempic,
+																text: this.goods.itemtitle,
+																url: coupon_click_url
+															})
+															.then(res => {
+																// if (res && res.tbk_tpwd_create_response.data.model) {
+																if (res && res.model) {
+                                    // this.tkl = res.tbk_tpwd_create_response.data.model;
+                                    this.tkl = res.model;
                                     if (type === "tkl" && type !== "tklbuy") {
                                         this.$refs.simpleModalTkl.show({
                                             showConfirmButton: false,
@@ -810,15 +821,25 @@
                             coupon_click_url = res.data.coupon_click_url
                         }
                         this.coupon_click_url = coupon_click_url;
-                        this.$Request.postF("/tao/taobao/tbwd", {
-                            appKey: this.$queue.getTaoBaoAppid(),
-                            appSecret: this.$queue.getTaoBaoSecret(),
-                            logo: this.goods.itempic,
-                            text: this.goods.itemtitle,
-                            url: coupon_click_url
-                        }).then(res => {
-                            if (res && res.tbk_tpwd_create_response.data.model) {
-                                this.tkl = res.tbk_tpwd_create_response.data.model;
+                        // this.$Request.postF("/tao/taobao/tbwd", {
+                        //     appKey: this.$queue.getTaoBaoAppid(),
+                        //     appSecret: this.$queue.getTaoBaoSecret(),
+                        //     logo: this.goods.itempic,
+                        //     text: this.goods.itemtitle,
+                        //     url: coupon_click_url
+                        // }).then(res => {
+												this.$Request.postP('/api/tao-pie/v1/taobao/tbk/tpwd', {
+														appKey: this.$queue.getTaoBaoAppid(),
+														appSecret: this.$queue.getTaoBaoSecret(),
+														logo: this.goods.itempic,
+														text: this.goods.itemtitle,
+														url: coupon_click_url
+													})
+													.then(res => {
+                            // if (res && res.tbk_tpwd_create_response.data.model) {
+														if (res && res.model) {
+                                // this.tkl = res.tbk_tpwd_create_response.data.model;
+                                this.tkl = res.model;
                                 // uni.setClipboardData({
                                 //     data: res.tbk_tpwd_create_response.data.model,
                                 //     success: (r => {

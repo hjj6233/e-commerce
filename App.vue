@@ -197,14 +197,6 @@ export default {
 				}
 			}
 		});
-		//获取京东默认pid
-		that.$Request.getT('/common/type/27').then(res => {
-			if (res.status == 0) {
-				if (res.data && res.data.value) {
-					this.$queue.setData('jingdongpid', res.data.value);
-				}
-			}
-		});
 		//最高佣金 41
 		that.$Request.getT('/common/type/41').then(res => {
 			if (res.status == 0) {

@@ -127,7 +127,8 @@
 
             loadCouponList: function (type) {
                 this.loadingType = 1;
-                this.$Request.get('/api/column/apikey/maxd/type/2/back/20/sort/' + this.sort + '/min_id/' + this.min_id + '/cid/' + this.cid).then(res => {
+                // this.$Request.get('/api/column/apikey/maxd/type/2/back/20/sort/' + this.sort + '/min_id/' + this.min_id + '/cid/' + this.cid).then(res => {
+								this.$Request.getP('/api/tao-pie/v1/haodanku/goods/column?type=2&back=20&min_id=' + this.min_id + '&sort=' + this.sort + '&cid=' + this.cid).then(res => {
                     this.loadingType = 0;
                     if (res.code === 1) {
                         if (this.page === 1) {

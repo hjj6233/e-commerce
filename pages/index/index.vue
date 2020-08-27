@@ -1217,10 +1217,12 @@
 			 */
 			loadCouponList: function(type) {
 				this.category[this.TabCur].loadingType = 1;
-				this.$Request
-					.get('/api/column/apikey/maxd/type/9/back/10/min_id/' + this.category[this.TabCur].page + '/sort/9/cid/' + this.category[
-						this.TabCur].positon)
-					.then(res => {
+				// this.$Request
+				// 	.get('/api/column/apikey/maxd/type/9/back/10/min_id/' + this.category[this.TabCur].page + '/sort/9/cid/' + this.category[
+				// 		this.TabCur].positon)
+				// 	.then(res => {
+			  this.$Request.getP('/api/tao-pie/v1/haodanku/goods/column?type=9&back=10&min_id=' + this.category[this.TabCur].page + '&sort=9&cid=' +
+				  this.category[this.TabCur].positon).then(res => {
 						this.category[this.TabCur].loadingType = 0;
 						if (res.code === 1) {
 							this.category[this.TabCur].page = res.min_id;
