@@ -497,7 +497,6 @@ export default {
 			}
 		}
 		let ua = navigator.userAgent.toLowerCase();
-
 		if (ua.indexOf('micromessenger') !== -1) {
 			let openid = this.$queue.getData('openid');
 			if (!openid) {

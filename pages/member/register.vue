@@ -75,17 +75,17 @@
 		},
 		onShow() {
 			let ua = navigator.userAgent.toLowerCase();
-			if (ua.indexOf('micromessenger') === -1) {
-				uni.redirectTo({
-					url: './erweimaRegister'
-				})
-			}else{
-				if (!this.$queue.getData('openid')) {
-					uni.redirectTo({
-						url: '/pages/member/erweimaRegister'
-					});
-				}
-			}
+			// if (ua.indexOf('micromessenger') === -1) {
+			// 	uni.redirectTo({
+			// 		url: './erweimaRegister'
+			// 	})
+			// }else{
+			// 	if (!this.$queue.getData('openid')) {
+			// 		uni.redirectTo({
+			// 			url: '/pages/member/erweimaRegister'
+			// 		});
+			// 	}
+			// }
 		},
 		mounted() {
 			_this = this;
