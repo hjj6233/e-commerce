@@ -25,7 +25,6 @@ module.exports = {
 		return info;
 	},
 	getP: function(url, data, header) {
-		header = header || "application/json";
 		url = this.config("APIHOST2") + url;
 		return new Promise((succ, error) => {
 			uni.request({
@@ -43,11 +42,14 @@ module.exports = {
 	},
 	postP: function(url, data, header) {
 		header = header || "application/json";
+		var header2 = 'application/x-www-form-urlencoded'
+		var header3 = 'multipart/form-data'
 		url = this.config("APIHOST2") + url;
 		return new Promise((succ, error) => {
 			uni.request({
 				url: url,
 				data: data,
+				requestType: "form",
 				method: "POST",
 				header: {
 					"content-type": header
@@ -59,6 +61,23 @@ module.exports = {
 					error.call(self, e)
 				}
 			})
+		})
+	},
+	postForm: function(url, data, header) {
+		url = this.config("APIHOST2") + url;
+		return new Promise((succ, error) => {
+			uni.uploadFile({
+				url: url,
+				filePath: 'http://192.168.254.195/pages/member/register',
+				name: 'file',
+				formData: data,
+				success: function(result) {
+					succ.call(self, result.data)
+				},
+				fail: function(e) {
+					error.call(self, e)
+				}
+		});
 		})
 	},
 	post: function(url, data, header) {

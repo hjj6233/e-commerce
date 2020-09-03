@@ -35,10 +35,10 @@
 </template>
 
 <script>
-	var _this, countDown;
 	export default{
 		data(){
 			return{
+				countDown: null,
 				showPassword: false, //是否显示明文
 				second: 0, //倒计时
 				isRunCode: false, //是否开始倒计时
@@ -83,12 +83,11 @@
 			event: 'input'
 		},
 		mounted() {
-			_this=this
 			//准备触发
 			this.$on('runCode',(val)=>{
-                this.runCode(val);
-            });
-			clearInterval(countDown);//先清理一次循环，避免缓存
+					this.runCode(val);
+			});
+			if(this.countDown) clearInterval(this.countDown);//先清理一次循环，避免缓存
 		},
 		methods:{
 			showPass(){
@@ -126,13 +125,11 @@
 				}
 				this.isRunCode= true
 				this.second = this._setTime //倒数秒数
-
-				let _this=this;
-				countDown = setInterval(function(){
-					_this.second--
-					if(_this.second==0){
-						_this.isRunCode= false
-						clearInterval(countDown)
+				this.countDown = setInterval(() => {
+					this.second--
+					if(this.second==0){
+						this.isRunCode= false
+						clearInterval(this.countDown)
 					}
 				},1000)
 			}

@@ -195,6 +195,7 @@
 			}
 		},
 		onLoad: function(e) {
+			console.log(e)
 			this.keywords = e.keywords;
 			let a = this.$queue.getData("isEnable")
 			if (a) {
@@ -338,8 +339,10 @@
 			},
 			loadTaoBaoCouponList: function(type) {
 				this.loadingType = 1;
-				this.$Request.get('/api/supersearch/apikey/maxd/keyword/' + this.keywords + '/back/20/sort/' + this.sort +
-					'/min_id/' + this.min_id + '/is_coupon/1/tb_p/' + this.tb_p).then(res => {
+				// this.$Request.get('/api/supersearch/apikey/maxd/keyword/' + this.keywords + '/back/20/sort/' + this.sort +
+				// 	'/min_id/' + this.min_id + '/is_coupon/1/tb_p/' + this.tb_p).then(res => {
+				this.$Request.getP('/api/tao-pie/v1/haodanku/search/super-search?keyword=' + this.keywords + '&back=20&sort=' + this.sort +
+					'&min_id=' + this.min_id + '&is_coupon=1&tb_p=' + this.tb_p).then(res => {
 					this.loadingType = 0;
 					if (res.code === 1) {
 						if (this.page === 1) {

@@ -587,15 +587,18 @@
 			goLoginInfo() {
 				this.$queue.setData("href", '/pages/member/user');
 				//#ifdef H5
-				uni.navigateTo({
-					url: '/pages/member/register'
-				});
+				// uni.navigateTo({
+				// 	url: '/pages/member/register'
+				// });
 				//#endif
 				//#ifndef H5
-				uni.navigateTo({
-					url: '/pages/public/login'
-				});
+				// uni.navigateTo({
+				// 	url: '/pages/public/login'
+				// });
 				//#endif
+				uni.navigateTo({
+					url: '/pages/member/login'
+				});
 			},
 			navToLogins(url) {
 				let token = this.$queue.getData("token");
@@ -622,17 +625,13 @@
 				} else {
 					this.goLoginInfo();
 				}
-
 			},
-
 			goLogin(url) {
 				let token = this.$queue.getData("token");
 				if (!token) {
 					this.goLoginInfo();
 				}
-
 			},
-
 		}
 	}
 </script>

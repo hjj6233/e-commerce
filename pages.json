@@ -457,7 +457,7 @@
 		{
 			"path": "pages/member/register",
 			"style": {
-				"navigationBarTitleText": "登录",
+				"navigationBarTitleText": "注册",
 				"app-plus": {
 					"titleNView": false,
 					"bounce": "none",
