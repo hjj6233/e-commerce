@@ -553,7 +553,7 @@
 		{
 			"path": "pages/public/login",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "公共登录",
 				"navigationStyle": "custom",
 				"app-plus": {
 					"titleNView": false,
@@ -584,7 +584,7 @@
 		{
 			"path": "pages/public/register",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "公共注册",
 				"navigationStyle": "custom",
 				"app-plus": {
 					"titleNView": false,
@@ -605,7 +605,7 @@
 		{
 			"path": "pages/public/pwd",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "找回密码",
 				"navigationStyle": "custom",
 				"app-plus": {
 					"titleNView": false,
